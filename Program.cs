@@ -158,7 +158,7 @@ namespace AdivinheSepuder_Lista4
             {
                 maxTentarivas--;
                 TextoColorido ("Voce errou \n", rnd);
-                // Para fazer a "animacao" mnadei o Thread("processador")
+                // Para fazer a "animacao" manda o Thread("processador")
                 // parar por 0,4s(o Thread.Sleep usa ms) 
                 Thread.Sleep (400);
                 // Roda essa funcao/metodo denovo
