@@ -35,6 +35,20 @@ namespace AdivinheSepuder_Lista4
             //Pergunta se o usuario quer reniciar o jogo ou sair
             DerrotaOuReniciar (senha);
         }
+        static string DicaQuantosDigitos (int senha)
+        {
+            // Tranformando a senha em um array
+            // de char
+            char[] charSeha = senha.ToString ().ToCharArray ();
+            string stringSenha = "";
+            // Para cada elemento no array stringSenha recebe *
+            foreach (var item in charSeha)
+            {
+                stringSenha += "*";
+            }
+            // Quantidade de digitos da senha 
+            return stringSenha;
+        }
         static (int, int) OrganizarValores ((int max, int min) valores)
         {
             // Para nao perder nem um valor e necessario
@@ -51,53 +65,6 @@ namespace AdivinheSepuder_Lista4
                 valores.max = aux;
             }
             return valores;
-        }
-        static string DicaQuantosDigitos (int senha)
-        {
-            // Tranformando a senha em um array
-            // de char
-            char[] charSeha = senha.ToString ().ToCharArray ();
-            string stringSenha = "";
-            // Para cada elemento no array stringSenha recebe *
-            foreach (var item in charSeha)
-            {
-                stringSenha += "*";
-            }
-            // Quantidade de digitos da senha 
-            return stringSenha;
-        }
-        static void TextoColorido (string texto, Random rnd, int tempoDeExcrita = 250)
-        {
-            // Lista da cores para o texto 0 a 14
-            ConsoleColor[] cores = {
-            ConsoleColor.Red,
-            ConsoleColor.Green,
-            ConsoleColor.Blue,
-            ConsoleColor.Cyan,
-            ConsoleColor.Magenta,
-            ConsoleColor.Yellow,
-            ConsoleColor.White,
-            ConsoleColor.Gray,
-            ConsoleColor.DarkRed,
-            ConsoleColor.DarkBlue,
-            ConsoleColor.DarkGreen,
-            ConsoleColor.DarkCyan,
-            ConsoleColor.DarkGray,
-            ConsoleColor.DarkMagenta,
-            ConsoleColor.DarkYellow
-            };
-            // Transformando o texto em um array de char
-            char[] charTexto = texto.ToCharArray ();
-            // Imprimindo os caracteres do array
-            // e pegando um cor aleatorio para cada caracter
-            for (int i = 0; i < texto.Length; i++)
-            {
-                Console.ForegroundColor = cores[rnd.Next (0, 14)];
-                Console.Write (texto[i]);
-                // Para fazer a "animacao" mnadei o Thread("processador")
-                // parar por 0,25s(o Thread.Sleep usa ms) 
-                Thread.Sleep (tempoDeExcrita);
-            }
         }
         static (int, int) SelecaoDeDificuldade ((int max, int min) valores, Random rnd)
         {
@@ -142,6 +109,39 @@ namespace AdivinheSepuder_Lista4
                     return;
                 default:
                     return;
+            }
+        }
+        static void TextoColorido (string texto, Random rnd, int tempoDeExcrita = 250)
+        {
+            // Lista da cores para o texto 0 a 14
+            ConsoleColor[] cores = {
+            ConsoleColor.Red,
+            ConsoleColor.Green,
+            ConsoleColor.Blue,
+            ConsoleColor.Cyan,
+            ConsoleColor.Magenta,
+            ConsoleColor.Yellow,
+            ConsoleColor.White,
+            ConsoleColor.Gray,
+            ConsoleColor.DarkRed,
+            ConsoleColor.DarkBlue,
+            ConsoleColor.DarkGreen,
+            ConsoleColor.DarkCyan,
+            ConsoleColor.DarkGray,
+            ConsoleColor.DarkMagenta,
+            ConsoleColor.DarkYellow
+            };
+            // Transformando o texto em um array de char
+            char[] charTexto = texto.ToCharArray ();
+            // Imprimindo os caracteres do array
+            // e pegando um cor aleatorio para cada caracter
+            for (int i = 0; i < texto.Length; i++)
+            {
+                Console.ForegroundColor = cores[rnd.Next (0, 14)];
+                Console.Write (texto[i]);
+                // Para fazer a "animacao" mnadei o Thread("processador")
+                // parar por 0,25s(o Thread.Sleep usa ms) 
+                Thread.Sleep (tempoDeExcrita);
             }
         }
         static void Tentativas (int senha, Random rnd, int maxTentarivas = 5)
